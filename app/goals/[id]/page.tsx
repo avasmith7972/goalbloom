@@ -135,9 +135,12 @@ export default function GoalDetail() {
   };
 
   const deleteGoal = () => {
-    if (!confirm('Delete this goal?')) return;
+    if (!confirm('Delete this goal? It will be saved in History.')) return;
     const goals: Goal[] = JSON.parse(localStorage.getItem('gb_goals') || '[]');
     localStorage.setItem('gb_goals', JSON.stringify(goals.filter(g => g.id !== goal?.id)));
+    const history = JSON.parse(localStorage.getItem('gb_history') || '[]');
+    history.unshift({ ...goal, type: 'deleted', archivedAt: new Date().toISOString() });
+    localStorage.setItem('gb_history', JSON.stringify(history));
     router.push('/');
   };
 
@@ -153,15 +156,10 @@ export default function GoalDetail() {
       {/* Header */}
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-
-          {/* Logo row — clickable, goes to homepage */}
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', textDecoration: 'none' }}>
             <img src="/logo.svg" alt="GoalBloom" width={30} height={30} style={{ filter: 'brightness(0) invert(1)' }} />
-            <span style={{ fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
-              GoalBloom
-            </span>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: 'bold', color: 'white' }}>GoalBloom</span>
           </Link>
-
           <button onClick={() => router.push('/')}
             style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', borderRadius: '50%', width: '36px', height: '36px', cursor: 'pointer', fontSize: '18px', marginBottom: '16px' }}>
             ←
@@ -184,7 +182,6 @@ export default function GoalDetail() {
 
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
 
-        {/* Completed banner */}
         {goal.progress === 100 && (
           <div style={{ background: 'linear-gradient(135deg, #16a34a, #4ade80)', borderRadius: '14px', padding: '16px', marginBottom: '16px', textAlign: 'center', color: 'white', fontWeight: '700', fontSize: '16px' }}>
             🎉 Goal Completed! You did it!
@@ -219,13 +216,9 @@ export default function GoalDetail() {
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: m.done ? '#f0fdf4' : '#fafafa', borderRadius: '10px', border: `1px solid ${m.done ? '#bbf7d0' : '#e5e7eb'}` }}>
                 <input type="checkbox" checked={m.done} onChange={() => toggleMilestone(i)}
                   style={{ width: '18px', height: '18px', accentColor: '#7c3aed', cursor: 'pointer', flexShrink: 0 }} />
-                <span style={{ flex: 1, fontSize: '14px', color: m.done ? '#6b7280' : '#1f2937', textDecoration: m.done ? 'line-through' : 'none' }}>
-                  {m.text}
-                </span>
+                <span style={{ flex: 1, fontSize: '14px', color: m.done ? '#6b7280' : '#1f2937', textDecoration: m.done ? 'line-through' : 'none' }}>{m.text}</span>
                 <button onClick={() => deleteMilestone(i)}
-                  style={{ background: 'none', border: 'none', color: '#d1d5db', cursor: 'pointer', fontSize: '16px', padding: '0 2px', lineHeight: 1 }}>
-                  ×
-                </button>
+                  style={{ background: 'none', border: 'none', color: '#d1d5db', cursor: 'pointer', fontSize: '16px', padding: '0 2px', lineHeight: 1 }}>×</button>
               </div>
             ))}
           </div>
@@ -271,7 +264,6 @@ export default function GoalDetail() {
         <footer style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid #ede9fe' }}>
           © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
         </footer>
-
       </div>
     </div>
   );

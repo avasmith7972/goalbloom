@@ -68,15 +68,10 @@ export default function Dashboard() {
       {/* Header */}
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-
-          {/* Logo row — clickable, goes to homepage */}
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px', textDecoration: 'none' }}>
             <img src="/logo.svg" alt="GoalBloom" width={34} height={34} style={{ filter: 'brightness(0) invert(1)' }} />
-            <span style={{ fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: 'bold', color: 'white', letterSpacing: '0.3px' }}>
-              GoalBloom
-            </span>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: 'bold', color: 'white', letterSpacing: '0.3px' }}>GoalBloom</span>
           </Link>
-
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <p style={{ fontSize: '14px', opacity: 0.85, marginBottom: '4px' }}>Welcome back 👋</p>
@@ -87,7 +82,6 @@ export default function Dashboard() {
               + Add Goal
             </button>
           </div>
-
           <div style={{ marginTop: '16px', background: 'rgba(255,255,255,0.15)', borderRadius: '12px', padding: '12px 16px', fontSize: '13px', fontStyle: 'italic', lineHeight: '1.5' }}>
             "{quote}"
           </div>
@@ -162,22 +156,27 @@ export default function Dashboard() {
           </div>
         )}
 
-        <button onClick={() => router.push('/calendar')}
-          style={{ width: '100%', marginTop: '20px', background: 'white', border: '2px dashed #c4b5fd', borderRadius: '14px', padding: '14px', color: '#7c3aed', fontWeight: '600', cursor: 'pointer', fontSize: '14px' }}>
-          📅 View Calendar
-        </button>
+        {/* Navigation buttons */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '20px' }}>
+          <button onClick={() => router.push('/calendar')}
+            style={{ width: '100%', background: 'white', border: '2px dashed #c4b5fd', borderRadius: '14px', padding: '14px', color: '#7c3aed', fontWeight: '600', cursor: 'pointer', fontSize: '14px' }}>
+            📅 View Calendar
+          </button>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <button onClick={() => router.push('/history')}
+              style={{ background: 'white', border: '2px dashed #c4b5fd', borderRadius: '14px', padding: '14px', color: '#7c3aed', fontWeight: '600', cursor: 'pointer', fontSize: '14px' }}>
+              📋 History
+            </button>
+            <button onClick={() => router.push('/reflections')}
+              style={{ background: 'white', border: '2px dashed #c4b5fd', borderRadius: '14px', padding: '14px', color: '#7c3aed', fontWeight: '600', cursor: 'pointer', fontSize: '14px' }}>
+              🪞 Reflections
+            </button>
+          </div>
+        </div>
 
-        <footer style={{
-          textAlign: 'center',
-          padding: '24px 16px',
-          marginTop: '32px',
-          fontSize: '12px',
-          color: '#9ca3af',
-          borderTop: '1px solid #ede9fe'
-        }}>
+        <footer style={{ textAlign: 'center', padding: '24px 16px', marginTop: '32px', fontSize: '12px', color: '#9ca3af', borderTop: '1px solid #ede9fe' }}>
           © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
         </footer>
-
       </div>
     </div>
   );
