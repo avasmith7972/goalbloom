@@ -63,8 +63,19 @@ export default function Dashboard() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8f4ff', fontFamily: 'system-ui, sans-serif' }}>
+
+      {/* Header */}
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+
+          {/* Logo row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
+            <img src="/logo.svg" alt="GoalBloom" width={34} height={34} style={{ filter: 'brightness(0) invert(1)' }} />
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: 'bold', color: 'white', letterSpacing: '0.3px' }}>
+              GoalBloom
+            </span>
+          </div>
+
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <p style={{ fontSize: '14px', opacity: 0.85, marginBottom: '4px' }}>Welcome back 👋</p>
@@ -75,13 +86,17 @@ export default function Dashboard() {
               + Add Goal
             </button>
           </div>
+
           <div style={{ marginTop: '16px', background: 'rgba(255,255,255,0.15)', borderRadius: '12px', padding: '12px 16px', fontSize: '13px', fontStyle: 'italic', lineHeight: '1.5' }}>
             "{quote}"
           </div>
         </div>
       </div>
 
+      {/* Main content */}
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
+
+        {/* Stats */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '10px', marginBottom: '24px' }}>
           {[
             { label: 'Total', value: total, color: '#7c3aed', bg: '#f3e8ff' },
@@ -151,7 +166,18 @@ export default function Dashboard() {
           📅 View Calendar
         </button>
 
-        <p style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '32px' }}>Built by Mehwish © 2026</p>
+        {/* Professional copyright footer */}
+        <footer style={{
+          textAlign: 'center',
+          padding: '24px 16px',
+          marginTop: '32px',
+          fontSize: '12px',
+          color: '#9ca3af',
+          borderTop: '1px solid #ede9fe'
+        }}>
+          © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
+        </footer>
+
       </div>
     </div>
   );
