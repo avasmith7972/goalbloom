@@ -38,20 +38,33 @@ export default function NewGoal() {
   };
 
   const priorityOptions = [
-    { value: 'High',   label: '🔴 High',   color: '#c0392b', bg: '#fdecea', selected: '#fdecea', border: '#c0392b' },
-    { value: 'Medium', label: '🟡 Medium', color: '#d68910', bg: '#fef9e7', selected: '#fef9e7', border: '#d68910' },
-    { value: 'Low',    label: '🟢 Low',    color: '#1e8449', bg: '#eafaf1', selected: '#eafaf1', border: '#1e8449' },
+    { value: 'High',   label: '🔴 High',   color: '#c0392b', bg: '#fdecea', border: '#c0392b' },
+    { value: 'Medium', label: '🟡 Medium', color: '#d68910', bg: '#fef9e7', border: '#d68910' },
+    { value: 'Low',    label: '🟢 Low',    color: '#1e8449', bg: '#eafaf1', border: '#1e8449' },
   ];
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8f4ff', fontFamily: 'system-ui, sans-serif' }}>
+
+      {/* Header */}
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <button onClick={() => router.push('/')}
-            style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', borderRadius: '50%', width: '36px', height: '36px', cursor: 'pointer', fontSize: '18px' }}>
-            ←
-          </button>
-          <h1 style={{ fontSize: '22px', fontWeight: '700', margin: 0 }}>🌱 New Goal</h1>
+        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+
+          {/* Logo row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+            <img src="/logo.svg" alt="GoalBloom" width={30} height={30} style={{ filter: 'brightness(0) invert(1)' }} />
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
+              GoalBloom
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button onClick={() => router.push('/')}
+              style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', borderRadius: '50%', width: '36px', height: '36px', cursor: 'pointer', fontSize: '18px' }}>
+              ←
+            </button>
+            <h1 style={{ fontSize: '22px', fontWeight: '700', margin: 0 }}>🌱 New Goal</h1>
+          </div>
         </div>
       </div>
 
@@ -129,6 +142,12 @@ export default function NewGoal() {
           style={{ width: '100%', padding: '16px', background: 'linear-gradient(135deg, #7c3aed, #a855f7)', color: 'white', border: 'none', borderRadius: '14px', fontSize: '17px', fontWeight: '700', cursor: 'pointer' }}>
           🌸 Plant This Goal
         </button>
+
+        {/* Copyright footer */}
+        <footer style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid #ede9fe' }}>
+          © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
+        </footer>
+
       </div>
     </div>
   );

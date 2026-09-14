@@ -152,6 +152,15 @@ export default function GoalDetail() {
       {/* Header */}
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+
+          {/* Logo row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+            <img src="/logo.svg" alt="GoalBloom" width={30} height={30} style={{ filter: 'brightness(0) invert(1)' }} />
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
+              GoalBloom
+            </span>
+          </div>
+
           <button onClick={() => router.push('/')}
             style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', borderRadius: '50%', width: '36px', height: '36px', cursor: 'pointer', fontSize: '18px', marginBottom: '16px' }}>
             ←
@@ -201,20 +210,14 @@ export default function GoalDetail() {
             <span style={{ fontWeight: '700', color: '#1f2937', fontSize: '16px' }}>✅ Milestones</span>
             <span style={{ fontSize: '12px', color: '#7c3aed', fontWeight: '600' }}>{doneCount}/{goal.milestones.length} done</span>
           </div>
-
-          {/* Milestone list */}
           {goal.milestones.length === 0 && (
             <p style={{ fontSize: '13px', color: '#9ca3af', marginBottom: '14px', fontStyle: 'italic' }}>No milestones yet. Add one below!</p>
           )}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px' }}>
             {goal.milestones.map((m, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', background: m.done ? '#f0fdf4' : '#fafafa', borderRadius: '10px', border: `1px solid ${m.done ? '#bbf7d0' : '#e5e7eb'}` }}>
-                <input
-                  type="checkbox"
-                  checked={m.done}
-                  onChange={() => toggleMilestone(i)}
-                  style={{ width: '18px', height: '18px', accentColor: '#7c3aed', cursor: 'pointer', flexShrink: 0 }}
-                />
+                <input type="checkbox" checked={m.done} onChange={() => toggleMilestone(i)}
+                  style={{ width: '18px', height: '18px', accentColor: '#7c3aed', cursor: 'pointer', flexShrink: 0 }} />
                 <span style={{ flex: 1, fontSize: '14px', color: m.done ? '#6b7280' : '#1f2937', textDecoration: m.done ? 'line-through' : 'none' }}>
                   {m.text}
                 </span>
@@ -225,16 +228,11 @@ export default function GoalDetail() {
               </div>
             ))}
           </div>
-
-          {/* Add milestone */}
           <div style={{ display: 'flex', gap: '8px' }}>
-            <input
-              value={newMilestone}
-              onChange={e => setNewMilestone(e.target.value)}
+            <input value={newMilestone} onChange={e => setNewMilestone(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && addMilestone()}
               placeholder="Add a milestone..."
-              style={{ flex: 1, padding: '10px 12px', borderRadius: '10px', border: '2px solid #e9d5ff', fontSize: '14px', outline: 'none', fontFamily: 'system-ui, sans-serif' }}
-            />
+              style={{ flex: 1, padding: '10px 12px', borderRadius: '10px', border: '2px solid #e9d5ff', fontSize: '14px', outline: 'none', fontFamily: 'system-ui, sans-serif' }} />
             <button onClick={addMilestone}
               style={{ background: '#7c3aed', color: 'white', border: 'none', borderRadius: '10px', padding: '10px 16px', fontWeight: '700', cursor: 'pointer', fontSize: '14px' }}>
               + Add
@@ -245,13 +243,10 @@ export default function GoalDetail() {
         {/* Notes */}
         <div style={{ background: 'white', borderRadius: '16px', padding: '20px', marginBottom: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
           <span style={{ fontWeight: '700', color: '#1f2937', fontSize: '16px', display: 'block', marginBottom: '12px' }}>📝 Journal & Notes</span>
-          <textarea
-            value={goal.notes}
-            onChange={e => setGoal({ ...goal, notes: e.target.value })}
+          <textarea value={goal.notes} onChange={e => setGoal({ ...goal, notes: e.target.value })}
             placeholder="Write your thoughts, reflections, or anything about this goal..."
             rows={5}
-            style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '2px solid #e9d5ff', fontSize: '14px', outline: 'none', resize: 'vertical', fontFamily: 'system-ui, sans-serif', lineHeight: '1.6', boxSizing: 'border-box' }}
-          />
+            style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '2px solid #e9d5ff', fontSize: '14px', outline: 'none', resize: 'vertical', fontFamily: 'system-ui, sans-serif', lineHeight: '1.6', boxSizing: 'border-box' }} />
           <button onClick={saveNotes}
             style={{ marginTop: '10px', background: noteSaved ? '#16a34a' : '#7c3aed', color: 'white', border: 'none', borderRadius: '10px', padding: '10px 20px', fontWeight: '600', cursor: 'pointer', fontSize: '14px', transition: 'background 0.2s' }}>
             {noteSaved ? '✓ Saved!' : 'Save Notes'}
@@ -272,7 +267,11 @@ export default function GoalDetail() {
           🗑️ Delete Goal
         </button>
 
-        <p style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '32px' }}>Built by Mehwish © 2026</p>
+        {/* Copyright footer */}
+        <footer style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid #ede9fe' }}>
+          © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
+        </footer>
+
       </div>
     </div>
   );

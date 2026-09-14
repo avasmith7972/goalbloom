@@ -25,11 +25,16 @@ export default function Onboarding() {
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <div style={{ background: 'white', borderRadius: '24px', padding: '40px', maxWidth: '500px', width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
-        
+
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <div style={{ fontSize: '48px', marginBottom: '8px' }}>🌸</div>
-          <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#4c1d95' }}>Welcome to GoalBloom</h1>
-          <p style={{ color: '#6b7280', marginTop: '8px' }}>Let's set up your personal space 🚀</p>
+          {/* Custom SVG Logo */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+            <img src="/logo.svg" alt="GoalBloom" width={64} height={64} />
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: '26px', fontWeight: 'bold', color: '#4c1d95', letterSpacing: '0.3px' }}>
+              GoalBloom
+            </span>
+          </div>
+          <p style={{ color: '#6b7280', marginTop: '4px' }}>Let's set up your personal space 🚀</p>
         </div>
 
         <div style={{ marginBottom: '24px' }}>
@@ -39,7 +44,7 @@ export default function Onboarding() {
             placeholder="e.g. Mehwish"
             value={name}
             onChange={e => setName(e.target.value)}
-            style={{ width: '100%', padding: '12px 16px', borderRadius: '12px', border: '2px solid #e5e7eb', fontSize: '16px', outline: 'none' }}
+            style={{ width: '100%', padding: '12px 16px', borderRadius: '12px', border: '2px solid #e5e7eb', fontSize: '16px', outline: 'none', boxSizing: 'border-box' }}
           />
         </div>
 
@@ -72,7 +77,10 @@ export default function Onboarding() {
           Start Blooming 🌸
         </button>
 
-        <p style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '16px' }}>Built by Mehwish © 2026</p>
+        <footer style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #f3f4f6' }}>
+          © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
+        </footer>
+
       </div>
     </div>
   );
