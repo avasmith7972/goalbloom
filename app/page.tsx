@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const quotes = [
   "The secret of getting ahead is getting started. — Mark Twain",
@@ -68,13 +69,13 @@ export default function Dashboard() {
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
 
-          {/* Logo row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
+          {/* Logo row — clickable, goes to homepage */}
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px', textDecoration: 'none' }}>
             <img src="/logo.svg" alt="GoalBloom" width={34} height={34} style={{ filter: 'brightness(0) invert(1)' }} />
             <span style={{ fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: 'bold', color: 'white', letterSpacing: '0.3px' }}>
               GoalBloom
             </span>
-          </div>
+          </Link>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
@@ -166,7 +167,6 @@ export default function Dashboard() {
           📅 View Calendar
         </button>
 
-        {/* Professional copyright footer */}
         <footer style={{
           textAlign: 'center',
           padding: '24px 16px',

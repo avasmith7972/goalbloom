@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import Link from 'next/link';
 
 interface Milestone { text: string; done: boolean; }
 interface Goal {
@@ -153,13 +154,13 @@ export default function GoalDetail() {
       <div style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', padding: '24px 20px', color: 'white' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
 
-          {/* Logo row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+          {/* Logo row — clickable, goes to homepage */}
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', textDecoration: 'none' }}>
             <img src="/logo.svg" alt="GoalBloom" width={30} height={30} style={{ filter: 'brightness(0) invert(1)' }} />
             <span style={{ fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: 'bold', color: 'white' }}>
               GoalBloom
             </span>
-          </div>
+          </Link>
 
           <button onClick={() => router.push('/')}
             style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', borderRadius: '50%', width: '36px', height: '36px', cursor: 'pointer', fontSize: '18px', marginBottom: '16px' }}>
@@ -267,7 +268,6 @@ export default function GoalDetail() {
           🗑️ Delete Goal
         </button>
 
-        {/* Copyright footer */}
         <footer style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid #ede9fe' }}>
           © 2026 GoalBloom · Designed &amp; Built by Mehwish Naeem · All rights reserved
         </footer>
